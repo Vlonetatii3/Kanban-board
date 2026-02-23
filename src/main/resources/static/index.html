@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>MMach Tasks</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+<!-- BG -->
+<div class="bg" aria-hidden="true">
+    <div class="blob b1"></div>
+    <div class="blob b2"></div>
+    <div class="blob b3"></div>
+</div>
+
+<div class="app">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="brand">
+            <div class="logo">✓</div>
+            <div class="brand-text">
+                <div class="brand-title">MMach Tasks</div>
+                <div class="brand-sub">Spring Boot • API</div>
+            </div>
+        </div>
+
+        <div class="side-card">
+            <div class="side-title">Overview</div>
+            <div class="kpis">
+                <div class="kpi">
+                    <div class="kpi-label">Total</div>
+                    <div class="kpi-value" id="kpiTotal">—</div>
+                </div>
+                <div class="kpi">
+                    <div class="kpi-label">Statuses</div>
+                    <div class="kpi-value" id="kpiStatuses">—</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="side-actions">
+            <button class="btn btn-primary w-full" id="btnOpenCreate" type="button">
+                <span class="ic">＋</span> New Task
+            </button>
+            <button class="btn btn-ghost w-full" id="btnRefresh" type="button">
+                <span class="ic">⟳</span> Refresh
+            </button>
+        </div>
+
+        <div class="side-footer">
+            <div class="mini">
+                <div class="mini-title">Tip</div>
+                <div class="mini-text">Try editing a task name or moving it to a different status.</div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main -->
+    <main class="main">
+        <header class="topbar">
+            <div class="title">
+                <h1>Board</h1>
+                <p>A modern Kanban board.</p>
+            </div>
+
+            <div class="topbar-actions">
+                <div class="search">
+                    <span class="search-ic">⌕</span>
+                    <input id="searchInput" class="search-input" placeholder="Search tasks…" autocomplete="off" />
+                    <span class="kbd">ESC</span>
+                </div>
+
+                <button class="btn btn-primary" id="btnOpenCreateTop" type="button">
+                    <span class="ic">＋</span> Create
+                </button>
+            </div>
+        </header>
+
+        <section class="board" id="board">
+            <!-- columns injected -->
+        </section>
+    </main>
+</div>
+
+<!-- Modal -->
+<div class="modal hidden" id="modal">
+    <div class="backdrop" data-close="true"></div>
+
+    <div class="dialog" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="dialog-head">
+            <div>
+                <div class="dialog-title" id="modalTitle">New task</div>
+                <div class="dialog-sub">Create a task and assign it a status</div>
+            </div>
+            <button class="icon-btn" id="btnCloseModal" type="button" aria-label="Close">✕</button>
+        </div>
+
+        <form class="dialog-body" id="taskForm">
+            <label class="field">
+                <span class="field-label">Name</span>
+                <input class="input" id="taskName" maxlength="80" placeholder="e.g. Finish the UI" required />
+                <span class="field-hint">Max 80 characters.</span>
+            </label>
+
+            <label class="field">
+                <span class="field-label">Status</span>
+                <select class="input" id="taskStatus" required></select>
+            </label>
+
+            <div class="dialog-actions">
+                <button class="btn btn-ghost" type="button" id="btnCancel">Cancel</button>
+                <button class="btn btn-primary" type="submit" id="btnSubmit">
+                    <span class="ic">＋</span> Create task
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Toast -->
+<div class="toasts" id="toasts" aria-live="polite" aria-atomic="true"></div>
+
+<!-- Loading -->
+<div class="loading hidden" id="loading">
+    <div class="spinner"></div>
+    <div class="loading-text">Loading…</div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
