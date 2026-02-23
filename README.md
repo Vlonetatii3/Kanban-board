@@ -28,8 +28,7 @@ It allows users to organize tasks by status (e.g. To Do, In Progress, Done, Canc
 
 **API:** REST
 
-**Frontend:**  (Your UI, e.g. React / Angular / etc. — optional to add)
-
+**Frontend:**  HTML, CSS, JS
 ## 📦 Project Structure
 
 - Layered architecture (Controller, Service, Repository)
